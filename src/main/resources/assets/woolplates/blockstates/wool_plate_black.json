@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "powered=false": { "model": "woolplates:wool_plate_black_up" },
+        "powered=true": { "model": "woolplates:wool_plate_black_down" }
+    }
+}

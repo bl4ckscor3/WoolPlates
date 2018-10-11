@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "wool_plates",
+  "ingredients": [
+    {
+      "item": "minecraft:wooden_pressure_plate"
+    },
+    {
+      "item": "minecraft:wool",
+	  "data": 6
+    }
+  ],
+  "result": {
+    "item": "woolplates:wool_plate_pink",
+    "count": 1
+  }
+}
