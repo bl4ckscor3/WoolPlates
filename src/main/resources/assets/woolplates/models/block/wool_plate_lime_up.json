@@ -1,6 +1,6 @@
 {
     "parent": "block/pressure_plate_up",
     "textures": {
-        "texture": "blocks/wool_colored_lime"
+        "texture": "block/lime_wool"
     }
 }

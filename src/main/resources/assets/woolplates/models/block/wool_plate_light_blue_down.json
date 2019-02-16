@@ -1,6 +1,6 @@
 {
     "parent": "block/pressure_plate_down",
     "textures": {
-        "texture": "blocks/wool_colored_light_blue"
+        "texture": "block/light_blue_wool"
     }
 }

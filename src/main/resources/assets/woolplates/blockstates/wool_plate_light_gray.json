@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "powered=false": { "model": "woolplates:block/wool_plate_light_gray_up" },
+        "powered=true": { "model": "woolplates:block/wool_plate_light_gray_down" }
+    }
+}

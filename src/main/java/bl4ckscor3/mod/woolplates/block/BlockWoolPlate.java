@@ -1,6 +1,6 @@
 package bl4ckscor3.mod.woolplates.block;
 
-import bl4ckscor3.mod.woolplates.WoolPlates;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockPressurePlate;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -12,17 +12,14 @@ public class BlockWoolPlate extends BlockPressurePlate
 {
 	public BlockWoolPlate(String name)
 	{
-		super(Material.WOOD, Sensitivity.EVERYTHING);
+		super(Sensitivity.EVERYTHING, Block.Properties.create(Material.WOOD).hardnessAndResistance(0.5F).sound(SoundType.CLOTH));
 
 		setRegistryName(name);
-		setTranslationKey(WoolPlates.PREFIX + name);
-		setHardness(0.5F);
-		setSoundType(SoundType.CLOTH);
 	}
 
 	@Override
-	public void onFallenUpon(World worldIn, BlockPos pos, Entity entityIn, float fallDistance)
+	public void onFallenUpon(World world, BlockPos pos, Entity entity, float fallDistance)
 	{
-		super.onFallenUpon(worldIn, pos, entityIn, fallDistance * 0.8F);
+		super.onFallenUpon(world, pos, entity, fallDistance * 0.8F);
 	}
 }

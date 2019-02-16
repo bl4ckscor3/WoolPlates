@@ -3,15 +3,14 @@
   "group": "wool_plates",
   "ingredients": [
     {
-      "item": "minecraft:wooden_pressure_plate"
+      "tag": "minecraft:wooden_pressure_plates"
     },
     {
-      "item": "minecraft:wool",
-	  "data": 9
+      "item": "minecraft:blue_wool"
     }
   ],
   "result": {
-    "item": "woolplates:wool_plate_cyan",
+    "item": "woolplates:wool_plate_blue",
     "count": 1
   }
 }
