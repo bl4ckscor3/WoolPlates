@@ -3,7 +3,7 @@ loaderVersion="[27,)" #mandatory
 
 [[mods]] #mandatory
 	modId="woolplates" #mandatory
-	version="v1.1" #mandatory
+	version="v1.1.1" #mandatory
 	displayName="Wool Pressure Plates" #mandatory
 	description='''Adds pressure plates made out of wool.''' #mandatory
 	issueTrackerURL="https://github.com/bl4ckscor3/WoolPlates/issues"
