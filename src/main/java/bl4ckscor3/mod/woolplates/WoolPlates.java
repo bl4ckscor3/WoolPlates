@@ -9,7 +9,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.common.config.Config;
+import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.client.event.ConfigChangedEvent.OnConfigChangedEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -24,7 +27,7 @@ public class WoolPlates
 {
 	public static final String MODID = "woolplates";
 	public static final String NAME = "Wool Pressure Plates";
-	public static final String VERSION = "v1.1";
+	public static final String VERSION = "v1.2";
 	public static final String MC_VERSION = "1.12";
 	public static final String PREFIX = MODID + ":";
 
@@ -134,5 +137,12 @@ public class WoolPlates
 		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(GREEN), 0, new ModelResourceLocation(PREFIX + "wool_plate_green", "inventory"));
 		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(RED), 0, new ModelResourceLocation(PREFIX + "wool_plate_red", "inventory"));
 		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(BLACK), 0, new ModelResourceLocation(PREFIX + "wool_plate_black", "inventory"));
+	}
+
+	@SubscribeEvent
+	public static void onConfigChanged(OnConfigChangedEvent event)
+	{
+		if(event.getModID().equals(MODID))
+			ConfigManager.sync(MODID, Config.Type.INSTANCE);
 	}
 }
