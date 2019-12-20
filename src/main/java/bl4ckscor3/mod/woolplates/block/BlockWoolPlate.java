@@ -16,7 +16,7 @@ public class BlockWoolPlate extends PressurePlateBlock
 {
 	public BlockWoolPlate(String name)
 	{
-		super(Sensitivity.EVERYTHING, Block.Properties.create(Material.WOOL).hardnessAndResistance(0.5F).sound(SoundType.CLOTH));
+		super(Sensitivity.EVERYTHING, Block.Properties.create(Material.WOOL).doesNotBlockMovement().hardnessAndResistance(0.5F).sound(SoundType.CLOTH));
 
 		setRegistryName(name);
 	}

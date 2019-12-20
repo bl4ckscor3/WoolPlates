@@ -1,9 +1,9 @@
 modLoader="javafml" #mandatory
-loaderVersion="[27,)" #mandatory
+loaderVersion="[30,)" #mandatory
 
 [[mods]] #mandatory
 	modId="woolplates" #mandatory
-	version="v1.2" #mandatory
+	version="v1.2.1" #mandatory
 	displayName="Wool Pressure Plates" #mandatory
 	description='''Adds pressure plates made out of wool.''' #mandatory
 	issueTrackerURL="https://github.com/bl4ckscor3/WoolPlates/issues"
@@ -13,13 +13,13 @@ loaderVersion="[27,)" #mandatory
 [[dependencies.woolplates]]
     modId="forge"
     mandatory=true
-    versionRange="[27,)"
+    versionRange="[30,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.woolplates]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.14,1.15)"
+    versionRange="[1.15,1.16)"
     ordering="NONE"
     side="BOTH"
