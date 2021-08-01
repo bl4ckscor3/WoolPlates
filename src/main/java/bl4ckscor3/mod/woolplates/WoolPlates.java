@@ -1,10 +1,10 @@
 package bl4ckscor3.mod.woolplates;
 
 import bl4ckscor3.mod.woolplates.block.BlockWoolPlate;
-import net.minecraft.block.Block;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -85,21 +85,21 @@ public class WoolPlates
 	@SubscribeEvent
 	public static void registerItems(RegistryEvent.Register<Item> event)
 	{
-		event.getRegistry().register(new BlockItem(WHITE, new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(WHITE.getRegistryName()));
-		event.getRegistry().register(new BlockItem(ORANGE, new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(ORANGE.getRegistryName()));
-		event.getRegistry().register(new BlockItem(MAGENTA, new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(MAGENTA.getRegistryName()));
-		event.getRegistry().register(new BlockItem(LIGHT_BLUE, new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(LIGHT_BLUE.getRegistryName()));
-		event.getRegistry().register(new BlockItem(YELLOW, new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(YELLOW.getRegistryName()));
-		event.getRegistry().register(new BlockItem(LIME, new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(LIME.getRegistryName()));
-		event.getRegistry().register(new BlockItem(PINK, new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(PINK.getRegistryName()));
-		event.getRegistry().register(new BlockItem(GRAY, new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(GRAY.getRegistryName()));
-		event.getRegistry().register(new BlockItem(SILVER, new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(SILVER.getRegistryName()));
-		event.getRegistry().register(new BlockItem(CYAN, new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(CYAN.getRegistryName()));
-		event.getRegistry().register(new BlockItem(PURPLE, new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(PURPLE.getRegistryName()));
-		event.getRegistry().register(new BlockItem(BLUE, new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(BLUE.getRegistryName()));
-		event.getRegistry().register(new BlockItem(BROWN, new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(BROWN.getRegistryName()));
-		event.getRegistry().register(new BlockItem(GREEN, new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(GREEN.getRegistryName()));
-		event.getRegistry().register(new BlockItem(RED, new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(RED.getRegistryName()));
-		event.getRegistry().register(new BlockItem(BLACK, new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(BLACK.getRegistryName()));
+		event.getRegistry().register(new BlockItem(WHITE, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)).setRegistryName(WHITE.getRegistryName()));
+		event.getRegistry().register(new BlockItem(ORANGE, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)).setRegistryName(ORANGE.getRegistryName()));
+		event.getRegistry().register(new BlockItem(MAGENTA, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)).setRegistryName(MAGENTA.getRegistryName()));
+		event.getRegistry().register(new BlockItem(LIGHT_BLUE, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)).setRegistryName(LIGHT_BLUE.getRegistryName()));
+		event.getRegistry().register(new BlockItem(YELLOW, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)).setRegistryName(YELLOW.getRegistryName()));
+		event.getRegistry().register(new BlockItem(LIME, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)).setRegistryName(LIME.getRegistryName()));
+		event.getRegistry().register(new BlockItem(PINK, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)).setRegistryName(PINK.getRegistryName()));
+		event.getRegistry().register(new BlockItem(GRAY, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)).setRegistryName(GRAY.getRegistryName()));
+		event.getRegistry().register(new BlockItem(SILVER, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)).setRegistryName(SILVER.getRegistryName()));
+		event.getRegistry().register(new BlockItem(CYAN, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)).setRegistryName(CYAN.getRegistryName()));
+		event.getRegistry().register(new BlockItem(PURPLE, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)).setRegistryName(PURPLE.getRegistryName()));
+		event.getRegistry().register(new BlockItem(BLUE, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)).setRegistryName(BLUE.getRegistryName()));
+		event.getRegistry().register(new BlockItem(BROWN, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)).setRegistryName(BROWN.getRegistryName()));
+		event.getRegistry().register(new BlockItem(GREEN, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)).setRegistryName(GREEN.getRegistryName()));
+		event.getRegistry().register(new BlockItem(RED, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)).setRegistryName(RED.getRegistryName()));
+		event.getRegistry().register(new BlockItem(BLACK, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)).setRegistryName(BLACK.getRegistryName()));
 	}
 }

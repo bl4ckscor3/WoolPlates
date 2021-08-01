@@ -1,18 +1,18 @@
 package bl4ckscor3.mod.woolplates.block;
 
 import bl4ckscor3.mod.woolplates.SoundConfig;
-import net.minecraft.block.Block;
-import net.minecraft.block.PressurePlateBlock;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
-import net.minecraft.entity.Entity;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.World;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.PressurePlateBlock;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.Level;
 
-import net.minecraft.block.PressurePlateBlock.Sensitivity;
+import net.minecraft.world.level.block.PressurePlateBlock.Sensitivity;
 
 public class BlockWoolPlate extends PressurePlateBlock
 {
@@ -24,22 +24,22 @@ public class BlockWoolPlate extends PressurePlateBlock
 	}
 
 	@Override
-	public void fallOn(World world, BlockPos pos, Entity entity, float fallDistance)
+	public void fallOn(Level world, BlockPos pos, Entity entity, float fallDistance)
 	{
 		super.fallOn(world, pos, entity, fallDistance * 0.8F);
 	}
 
 	@Override
-	protected void playOnSound(IWorld world, BlockPos pos)
+	protected void playOnSound(LevelAccessor world, BlockPos pos)
 	{
 		if(SoundConfig.CONFIG.enableSound.get())
-			world.playSound(null, pos, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON, SoundCategory.BLOCKS, 0.3F, 0.8F);
+			world.playSound(null, pos, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON, SoundSource.BLOCKS, 0.3F, 0.8F);
 	}
 
 	@Override
-	protected void playOffSound(IWorld world, BlockPos pos)
+	protected void playOffSound(LevelAccessor world, BlockPos pos)
 	{
 		if(SoundConfig.CONFIG.enableSound.get())
-			world.playSound(null, pos, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundCategory.BLOCKS, 0.3F, 0.7F);
+			world.playSound(null, pos, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundSource.BLOCKS, 0.3F, 0.7F);
 	}
 }
