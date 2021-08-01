@@ -1,10 +1,10 @@
 package bl4ckscor3.mod.woolplates;
 
 import bl4ckscor3.mod.woolplates.block.BlockWoolPlate;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -19,8 +19,6 @@ import net.minecraftforge.registries.ObjectHolder;
 public class WoolPlates
 {
 	public static final String MODID = "woolplates";
-	public static final String NAME = "Wool Pressure Plates";
-	public static final String MC_VERSION = "1.12";
 	public static final String PREFIX = MODID + ":";
 
 	@ObjectHolder(PREFIX + "wool_plate_white")

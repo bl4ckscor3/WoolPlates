@@ -1,18 +1,17 @@
 package bl4ckscor3.mod.woolplates.block;
 
 import bl4ckscor3.mod.woolplates.SoundConfig;
+import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.PressurePlateBlock;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.Level;
-
-import net.minecraft.world.level.block.PressurePlateBlock.Sensitivity;
 
 public class BlockWoolPlate extends PressurePlateBlock
 {
@@ -24,9 +23,9 @@ public class BlockWoolPlate extends PressurePlateBlock
 	}
 
 	@Override
-	public void fallOn(Level world, BlockPos pos, Entity entity, float fallDistance)
+	public void fallOn(Level world, BlockState state, BlockPos pos, Entity entity, float fallDistance)
 	{
-		super.fallOn(world, pos, entity, fallDistance * 0.8F);
+		super.fallOn(world, state, pos, entity, fallDistance * 0.8F);
 	}
 
 	@Override
