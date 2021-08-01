@@ -12,32 +12,34 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 
+import net.minecraft.block.PressurePlateBlock.Sensitivity;
+
 public class BlockWoolPlate extends PressurePlateBlock
 {
 	public BlockWoolPlate(String name)
 	{
-		super(Sensitivity.EVERYTHING, Block.Properties.create(Material.WOOL).doesNotBlockMovement().hardnessAndResistance(0.5F).sound(SoundType.CLOTH));
+		super(Sensitivity.EVERYTHING, Block.Properties.of(Material.WOOL).noCollission().strength(0.5F).sound(SoundType.WOOL));
 
 		setRegistryName(name);
 	}
 
 	@Override
-	public void onFallenUpon(World world, BlockPos pos, Entity entity, float fallDistance)
+	public void fallOn(World world, BlockPos pos, Entity entity, float fallDistance)
 	{
-		super.onFallenUpon(world, pos, entity, fallDistance * 0.8F);
+		super.fallOn(world, pos, entity, fallDistance * 0.8F);
 	}
 
 	@Override
-	protected void playClickOnSound(IWorld world, BlockPos pos)
+	protected void playOnSound(IWorld world, BlockPos pos)
 	{
 		if(SoundConfig.CONFIG.enableSound.get())
-			world.playSound(null, pos, SoundEvents.BLOCK_WOODEN_PRESSURE_PLATE_CLICK_ON, SoundCategory.BLOCKS, 0.3F, 0.8F);
+			world.playSound(null, pos, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON, SoundCategory.BLOCKS, 0.3F, 0.8F);
 	}
 
 	@Override
-	protected void playClickOffSound(IWorld world, BlockPos pos)
+	protected void playOffSound(IWorld world, BlockPos pos)
 	{
 		if(SoundConfig.CONFIG.enableSound.get())
-			world.playSound(null, pos, SoundEvents.BLOCK_WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundCategory.BLOCKS, 0.3F, 0.7F);
+			world.playSound(null, pos, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundCategory.BLOCKS, 0.3F, 0.7F);
 	}
 }

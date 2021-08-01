@@ -85,21 +85,21 @@ public class WoolPlates
 	@SubscribeEvent
 	public static void registerItems(RegistryEvent.Register<Item> event)
 	{
-		event.getRegistry().register(new BlockItem(WHITE, new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(WHITE.getRegistryName()));
-		event.getRegistry().register(new BlockItem(ORANGE, new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(ORANGE.getRegistryName()));
-		event.getRegistry().register(new BlockItem(MAGENTA, new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(MAGENTA.getRegistryName()));
-		event.getRegistry().register(new BlockItem(LIGHT_BLUE, new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(LIGHT_BLUE.getRegistryName()));
-		event.getRegistry().register(new BlockItem(YELLOW, new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(YELLOW.getRegistryName()));
-		event.getRegistry().register(new BlockItem(LIME, new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(LIME.getRegistryName()));
-		event.getRegistry().register(new BlockItem(PINK, new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(PINK.getRegistryName()));
-		event.getRegistry().register(new BlockItem(GRAY, new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(GRAY.getRegistryName()));
-		event.getRegistry().register(new BlockItem(SILVER, new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(SILVER.getRegistryName()));
-		event.getRegistry().register(new BlockItem(CYAN, new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(CYAN.getRegistryName()));
-		event.getRegistry().register(new BlockItem(PURPLE, new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(PURPLE.getRegistryName()));
-		event.getRegistry().register(new BlockItem(BLUE, new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(BLUE.getRegistryName()));
-		event.getRegistry().register(new BlockItem(BROWN, new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(BROWN.getRegistryName()));
-		event.getRegistry().register(new BlockItem(GREEN, new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(GREEN.getRegistryName()));
-		event.getRegistry().register(new BlockItem(RED, new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(RED.getRegistryName()));
-		event.getRegistry().register(new BlockItem(BLACK, new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(BLACK.getRegistryName()));
+		event.getRegistry().register(new BlockItem(WHITE, new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(WHITE.getRegistryName()));
+		event.getRegistry().register(new BlockItem(ORANGE, new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(ORANGE.getRegistryName()));
+		event.getRegistry().register(new BlockItem(MAGENTA, new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(MAGENTA.getRegistryName()));
+		event.getRegistry().register(new BlockItem(LIGHT_BLUE, new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(LIGHT_BLUE.getRegistryName()));
+		event.getRegistry().register(new BlockItem(YELLOW, new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(YELLOW.getRegistryName()));
+		event.getRegistry().register(new BlockItem(LIME, new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(LIME.getRegistryName()));
+		event.getRegistry().register(new BlockItem(PINK, new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(PINK.getRegistryName()));
+		event.getRegistry().register(new BlockItem(GRAY, new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(GRAY.getRegistryName()));
+		event.getRegistry().register(new BlockItem(SILVER, new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(SILVER.getRegistryName()));
+		event.getRegistry().register(new BlockItem(CYAN, new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(CYAN.getRegistryName()));
+		event.getRegistry().register(new BlockItem(PURPLE, new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(PURPLE.getRegistryName()));
+		event.getRegistry().register(new BlockItem(BLUE, new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(BLUE.getRegistryName()));
+		event.getRegistry().register(new BlockItem(BROWN, new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(BROWN.getRegistryName()));
+		event.getRegistry().register(new BlockItem(GREEN, new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(GREEN.getRegistryName()));
+		event.getRegistry().register(new BlockItem(RED, new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(RED.getRegistryName()));
+		event.getRegistry().register(new BlockItem(BLACK, new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(BLACK.getRegistryName()));
 	}
 }
