@@ -1,6 +1,5 @@
-package bl4ckscor3.mod.woolplates.block;
+package bl4ckscor3.mod.woolplates;
 
-import bl4ckscor3.mod.woolplates.SoundConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -13,9 +12,9 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 
-public class BlockWoolPlate extends PressurePlateBlock
+public class WoolPlateBlock extends PressurePlateBlock
 {
-	public BlockWoolPlate(String name)
+	public WoolPlateBlock(String name)
 	{
 		super(Sensitivity.EVERYTHING, Block.Properties.of(Material.WOOL).noCollission().strength(0.5F).sound(SoundType.WOOL));
 

@@ -1,6 +1,5 @@
 package bl4ckscor3.mod.woolplates;
 
-import bl4ckscor3.mod.woolplates.block.BlockWoolPlate;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -62,22 +61,22 @@ public class WoolPlates
 	@SubscribeEvent
 	public static void registerBlocks(RegistryEvent.Register<Block> event)
 	{
-		event.getRegistry().register(new BlockWoolPlate("wool_plate_white"));
-		event.getRegistry().register(new BlockWoolPlate("wool_plate_orange"));
-		event.getRegistry().register(new BlockWoolPlate("wool_plate_magenta"));
-		event.getRegistry().register(new BlockWoolPlate("wool_plate_light_blue"));
-		event.getRegistry().register(new BlockWoolPlate("wool_plate_yellow"));
-		event.getRegistry().register(new BlockWoolPlate("wool_plate_lime"));
-		event.getRegistry().register(new BlockWoolPlate("wool_plate_pink"));
-		event.getRegistry().register(new BlockWoolPlate("wool_plate_gray"));
-		event.getRegistry().register(new BlockWoolPlate("wool_plate_light_gray"));
-		event.getRegistry().register(new BlockWoolPlate("wool_plate_cyan"));
-		event.getRegistry().register(new BlockWoolPlate("wool_plate_purple"));
-		event.getRegistry().register(new BlockWoolPlate("wool_plate_blue"));
-		event.getRegistry().register(new BlockWoolPlate("wool_plate_brown"));
-		event.getRegistry().register(new BlockWoolPlate("wool_plate_green"));
-		event.getRegistry().register(new BlockWoolPlate("wool_plate_red"));
-		event.getRegistry().register(new BlockWoolPlate("wool_plate_black"));
+		event.getRegistry().register(new WoolPlateBlock("wool_plate_white"));
+		event.getRegistry().register(new WoolPlateBlock("wool_plate_orange"));
+		event.getRegistry().register(new WoolPlateBlock("wool_plate_magenta"));
+		event.getRegistry().register(new WoolPlateBlock("wool_plate_light_blue"));
+		event.getRegistry().register(new WoolPlateBlock("wool_plate_yellow"));
+		event.getRegistry().register(new WoolPlateBlock("wool_plate_lime"));
+		event.getRegistry().register(new WoolPlateBlock("wool_plate_pink"));
+		event.getRegistry().register(new WoolPlateBlock("wool_plate_gray"));
+		event.getRegistry().register(new WoolPlateBlock("wool_plate_light_gray"));
+		event.getRegistry().register(new WoolPlateBlock("wool_plate_cyan"));
+		event.getRegistry().register(new WoolPlateBlock("wool_plate_purple"));
+		event.getRegistry().register(new WoolPlateBlock("wool_plate_blue"));
+		event.getRegistry().register(new WoolPlateBlock("wool_plate_brown"));
+		event.getRegistry().register(new WoolPlateBlock("wool_plate_green"));
+		event.getRegistry().register(new WoolPlateBlock("wool_plate_red"));
+		event.getRegistry().register(new WoolPlateBlock("wool_plate_black"));
 	}
 
 	@SubscribeEvent
