@@ -6,19 +6,14 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.PressurePlateBlock;
-import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
 
 public class WoolPlateBlock extends PressurePlateBlock
 {
-	public WoolPlateBlock(String name)
+	public WoolPlateBlock(Properties properties)
 	{
-		super(Sensitivity.EVERYTHING, Block.Properties.of(Material.WOOL).noCollission().strength(0.5F).sound(SoundType.WOOL));
-
-		setRegistryName(name);
+		super(Sensitivity.EVERYTHING, properties);
 	}
 
 	@Override

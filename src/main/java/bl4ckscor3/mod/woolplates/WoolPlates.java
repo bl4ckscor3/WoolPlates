@@ -4,99 +4,76 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.event.RegistryEvent;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.material.Material;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.registries.ObjectHolder;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.ForgeRegistries.Keys;
+import net.minecraftforge.registries.RegisterEvent;
+import net.minecraftforge.registries.RegistryObject;
 
 @Mod(WoolPlates.MODID)
 @EventBusSubscriber(bus=Bus.MOD)
 public class WoolPlates
 {
 	public static final String MODID = "woolplates";
-	public static final String PREFIX = MODID + ":";
+	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
 
-	@ObjectHolder(PREFIX + "wool_plate_white")
-	public static final Block WHITE = null;
-	@ObjectHolder(PREFIX + "wool_plate_orange")
-	public static final Block ORANGE = null;
-	@ObjectHolder(PREFIX + "wool_plate_magenta")
-	public static final Block MAGENTA = null;
-	@ObjectHolder(PREFIX + "wool_plate_light_blue")
-	public static final Block LIGHT_BLUE = null;
-	@ObjectHolder(PREFIX + "wool_plate_yellow")
-	public static final Block YELLOW = null;
-	@ObjectHolder(PREFIX + "wool_plate_lime")
-	public static final Block LIME = null;
-	@ObjectHolder(PREFIX + "wool_plate_pink")
-	public static final Block PINK = null;
-	@ObjectHolder(PREFIX + "wool_plate_gray")
-	public static final Block GRAY = null;
-	@ObjectHolder(PREFIX + "wool_plate_light_gray")
-	public static final Block SILVER = null;
-	@ObjectHolder(PREFIX + "wool_plate_cyan")
-	public static final Block CYAN = null;
-	@ObjectHolder(PREFIX + "wool_plate_purple")
-	public static final Block PURPLE = null;
-	@ObjectHolder(PREFIX + "wool_plate_blue")
-	public static final Block BLUE = null;
-	@ObjectHolder(PREFIX + "wool_plate_brown")
-	public static final Block BROWN = null;
-	@ObjectHolder(PREFIX + "wool_plate_green")
-	public static final Block GREEN = null;
-	@ObjectHolder(PREFIX + "wool_plate_red")
-	public static final Block RED = null;
-	@ObjectHolder(PREFIX + "wool_plate_black")
-	public static final Block BLACK = null;
+	public static final RegistryObject<WoolPlateBlock> WHITE = register("wool_plate_white");
+	public static final RegistryObject<WoolPlateBlock> ORANGE = register("wool_plate_orange");
+	public static final RegistryObject<WoolPlateBlock> MAGENTA = register("wool_plate_magenta");
+	public static final RegistryObject<WoolPlateBlock> LIGHT_BLUE = register("wool_plate_light_blue");
+	public static final RegistryObject<WoolPlateBlock> YELLOW = register("wool_plate_yellow");
+	public static final RegistryObject<WoolPlateBlock> LIME = register("wool_plate_lime");
+	public static final RegistryObject<WoolPlateBlock> PINK = register("wool_plate_pink");
+	public static final RegistryObject<WoolPlateBlock> GRAY = register("wool_plate_gray");
+	public static final RegistryObject<WoolPlateBlock> LIGHT_GRAY = register("wool_plate_light_gray");
+	public static final RegistryObject<WoolPlateBlock> CYAN = register("wool_plate_cyan");
+	public static final RegistryObject<WoolPlateBlock> PURPLE = register("wool_plate_purple");
+	public static final RegistryObject<WoolPlateBlock> BLUE = register("wool_plate_blue");
+	public static final RegistryObject<WoolPlateBlock> BROWN = register("wool_plate_brown");
+	public static final RegistryObject<WoolPlateBlock> GREEN = register("wool_plate_green");
+	public static final RegistryObject<WoolPlateBlock> RED = register("wool_plate_red");
+	public static final RegistryObject<WoolPlateBlock> BLACK = register("wool_plate_black");
 
 	public WoolPlates()
 	{
+		BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
 		ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, SoundConfig.CONFIG_SPEC);
 	}
 
 	@SubscribeEvent
-	public static void registerBlocks(RegistryEvent.Register<Block> event)
+	public static void onRegister(RegisterEvent event)
 	{
-		event.getRegistry().register(new WoolPlateBlock("wool_plate_white"));
-		event.getRegistry().register(new WoolPlateBlock("wool_plate_orange"));
-		event.getRegistry().register(new WoolPlateBlock("wool_plate_magenta"));
-		event.getRegistry().register(new WoolPlateBlock("wool_plate_light_blue"));
-		event.getRegistry().register(new WoolPlateBlock("wool_plate_yellow"));
-		event.getRegistry().register(new WoolPlateBlock("wool_plate_lime"));
-		event.getRegistry().register(new WoolPlateBlock("wool_plate_pink"));
-		event.getRegistry().register(new WoolPlateBlock("wool_plate_gray"));
-		event.getRegistry().register(new WoolPlateBlock("wool_plate_light_gray"));
-		event.getRegistry().register(new WoolPlateBlock("wool_plate_cyan"));
-		event.getRegistry().register(new WoolPlateBlock("wool_plate_purple"));
-		event.getRegistry().register(new WoolPlateBlock("wool_plate_blue"));
-		event.getRegistry().register(new WoolPlateBlock("wool_plate_brown"));
-		event.getRegistry().register(new WoolPlateBlock("wool_plate_green"));
-		event.getRegistry().register(new WoolPlateBlock("wool_plate_red"));
-		event.getRegistry().register(new WoolPlateBlock("wool_plate_black"));
+		event.register(Keys.ITEMS, helper -> {
+			helper.register("wool_plate_white", new BlockItem(WHITE.get(), new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
+			helper.register("wool_plate_orange", new BlockItem(ORANGE.get(), new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
+			helper.register("wool_plate_magenta", new BlockItem(MAGENTA.get(), new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
+			helper.register("wool_plate_light_blue", new BlockItem(LIGHT_BLUE.get(), new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
+			helper.register("wool_plate_yellow", new BlockItem(YELLOW.get(), new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
+			helper.register("wool_plate_lime", new BlockItem(LIME.get(), new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
+			helper.register("wool_plate_pink", new BlockItem(PINK.get(), new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
+			helper.register("wool_plate_gray", new BlockItem(GRAY.get(), new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
+			helper.register("wool_plate_light_gray", new BlockItem(LIGHT_GRAY.get(), new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
+			helper.register("wool_plate_cyan", new BlockItem(CYAN.get(), new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
+			helper.register("wool_plate_purple", new BlockItem(PURPLE.get(), new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
+			helper.register("wool_plate_blue", new BlockItem(BLUE.get(), new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
+			helper.register("wool_plate_brown", new BlockItem(BROWN.get(), new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
+			helper.register("wool_plate_green", new BlockItem(GREEN.get(), new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
+			helper.register("wool_plate_red", new BlockItem(RED.get(), new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
+			helper.register("wool_plate_black", new BlockItem(BLACK.get(), new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
+		});
 	}
 
-	@SubscribeEvent
-	public static void registerItems(RegistryEvent.Register<Item> event)
+	private static RegistryObject<WoolPlateBlock> register(String name)
 	{
-		event.getRegistry().register(new BlockItem(WHITE, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)).setRegistryName(WHITE.getRegistryName()));
-		event.getRegistry().register(new BlockItem(ORANGE, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)).setRegistryName(ORANGE.getRegistryName()));
-		event.getRegistry().register(new BlockItem(MAGENTA, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)).setRegistryName(MAGENTA.getRegistryName()));
-		event.getRegistry().register(new BlockItem(LIGHT_BLUE, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)).setRegistryName(LIGHT_BLUE.getRegistryName()));
-		event.getRegistry().register(new BlockItem(YELLOW, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)).setRegistryName(YELLOW.getRegistryName()));
-		event.getRegistry().register(new BlockItem(LIME, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)).setRegistryName(LIME.getRegistryName()));
-		event.getRegistry().register(new BlockItem(PINK, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)).setRegistryName(PINK.getRegistryName()));
-		event.getRegistry().register(new BlockItem(GRAY, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)).setRegistryName(GRAY.getRegistryName()));
-		event.getRegistry().register(new BlockItem(SILVER, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)).setRegistryName(SILVER.getRegistryName()));
-		event.getRegistry().register(new BlockItem(CYAN, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)).setRegistryName(CYAN.getRegistryName()));
-		event.getRegistry().register(new BlockItem(PURPLE, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)).setRegistryName(PURPLE.getRegistryName()));
-		event.getRegistry().register(new BlockItem(BLUE, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)).setRegistryName(BLUE.getRegistryName()));
-		event.getRegistry().register(new BlockItem(BROWN, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)).setRegistryName(BROWN.getRegistryName()));
-		event.getRegistry().register(new BlockItem(GREEN, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)).setRegistryName(GREEN.getRegistryName()));
-		event.getRegistry().register(new BlockItem(RED, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)).setRegistryName(RED.getRegistryName()));
-		event.getRegistry().register(new BlockItem(BLACK, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)).setRegistryName(BLACK.getRegistryName()));
+		return BLOCKS.register(name, () -> new WoolPlateBlock(Block.Properties.of(Material.WOOL).noCollission().strength(0.5F).sound(SoundType.WOOL)));
 	}
 }
