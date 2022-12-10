@@ -20,12 +20,10 @@ import net.minecraftforge.registries.RegisterEvent;
 import net.minecraftforge.registries.RegistryObject;
 
 @Mod(WoolPlates.MODID)
-@EventBusSubscriber(bus=Bus.MOD)
-public class WoolPlates
-{
+@EventBusSubscriber(bus = Bus.MOD)
+public class WoolPlates {
 	public static final String MODID = "woolplates";
 	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
-
 	public static final RegistryObject<WoolPlateBlock> WHITE = register("wool_plate_white");
 	public static final RegistryObject<WoolPlateBlock> ORANGE = register("wool_plate_orange");
 	public static final RegistryObject<WoolPlateBlock> MAGENTA = register("wool_plate_magenta");
@@ -43,15 +41,13 @@ public class WoolPlates
 	public static final RegistryObject<WoolPlateBlock> RED = register("wool_plate_red");
 	public static final RegistryObject<WoolPlateBlock> BLACK = register("wool_plate_black");
 
-	public WoolPlates()
-	{
+	public WoolPlates() {
 		BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
 		ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, SoundConfig.CONFIG_SPEC);
 	}
 
 	@SubscribeEvent
-	public static void onRegister(RegisterEvent event)
-	{
+	public static void onRegister(RegisterEvent event) {
 		event.register(Keys.ITEMS, helper -> {
 			helper.register("wool_plate_white", new BlockItem(WHITE.get(), new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
 			helper.register("wool_plate_orange", new BlockItem(ORANGE.get(), new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
@@ -72,8 +68,7 @@ public class WoolPlates
 		});
 	}
 
-	private static RegistryObject<WoolPlateBlock> register(String name)
-	{
+	private static RegistryObject<WoolPlateBlock> register(String name) {
 		return BLOCKS.register(name, () -> new WoolPlateBlock(Block.Properties.of(Material.WOOL).noCollission().strength(0.5F).sound(SoundType.WOOL)));
 	}
 }
