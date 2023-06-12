@@ -15,8 +15,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.PressurePlateBlock.Sensitivity;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
-import net.minecraft.world.level.material.Material;
-import net.minecraftforge.event.CreativeModeTabEvent;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -32,7 +31,7 @@ import net.minecraftforge.registries.RegisterEvent;
 public class WoolPlates {
 	public static final String MODID = "woolplates";
 	private static final List<ItemStack> STACKS_FOR_CREATIVE_TABS = new ArrayList<>();
-	public static final BlockSetType WOOL_PLATES_BLOCK_SET_TYPE = new BlockSetType(MODID + ":wool", SoundType.WOOL, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON, SoundEvents.EMPTY, SoundEvents.EMPTY);
+	public static final BlockSetType WOOL_PLATES_BLOCK_SET_TYPE = BlockSetType.register(new BlockSetType(MODID + ":wool", true, SoundType.WOOL, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON, SoundEvents.EMPTY, SoundEvents.EMPTY));
 
 	public WoolPlates() {
 		ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, SoundConfig.CONFIG_SPEC);
@@ -42,7 +41,7 @@ public class WoolPlates {
 	public static void onRegister(RegisterEvent event) {
 		event.register(Keys.BLOCKS, helper -> {
 			for (Color color : Color.values()) {
-				helper.register(getName(color), new WoolPlateBlock(Sensitivity.EVERYTHING, Block.Properties.of(Material.WOOL).noCollission().strength(0.5F), WOOL_PLATES_BLOCK_SET_TYPE));
+				helper.register(getName(color), new WoolPlateBlock(Sensitivity.EVERYTHING, Block.Properties.of().noCollission().strength(0.5F), WOOL_PLATES_BLOCK_SET_TYPE));
 			}
 		});
 		event.register(Keys.ITEMS, helper -> {
@@ -61,10 +60,10 @@ public class WoolPlates {
 	}
 
 	@SubscribeEvent
-	public static void onCreativeModeTabBuildContents(CreativeModeTabEvent.BuildContents event) {
-		if (event.getTab() == CreativeModeTabs.REDSTONE_BLOCKS)
+	public static void onCreativeModeTabBuildContents(BuildCreativeModeTabContentsEvent event) {
+		if (event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS)
 			event.getEntries().putAfter(new ItemStack(Items.STONE_PRESSURE_PLATE), STACKS_FOR_CREATIVE_TABS.get(0), TabVisibility.PARENT_AND_SEARCH_TABS); //white only
-		else if (event.getTab() == CreativeModeTabs.COLORED_BLOCKS)
+		else if (event.getTabKey() == CreativeModeTabs.COLORED_BLOCKS)
 			event.acceptAll(STACKS_FOR_CREATIVE_TABS);
 	}
 
