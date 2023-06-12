@@ -14,6 +14,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.PressurePlateBlock.Sensitivity;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -31,6 +32,7 @@ import net.minecraftforge.registries.RegisterEvent;
 public class WoolPlates {
 	public static final String MODID = "woolplates";
 	private static final List<ItemStack> STACKS_FOR_CREATIVE_TABS = new ArrayList<>();
+	public static final BlockSetType WOOL_PLATES_BLOCK_SET_TYPE = new BlockSetType(MODID + ":wool", SoundType.WOOL, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON, SoundEvents.EMPTY, SoundEvents.EMPTY);
 
 	public WoolPlates() {
 		ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, SoundConfig.CONFIG_SPEC);
@@ -40,7 +42,7 @@ public class WoolPlates {
 	public static void onRegister(RegisterEvent event) {
 		event.register(Keys.BLOCKS, helper -> {
 			for (Color color : Color.values()) {
-				helper.register(getName(color), new WoolPlateBlock(Sensitivity.EVERYTHING, Block.Properties.of(Material.WOOL).noCollission().strength(0.5F).sound(SoundType.WOOL), SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON));
+				helper.register(getName(color), new WoolPlateBlock(Sensitivity.EVERYTHING, Block.Properties.of(Material.WOOL).noCollission().strength(0.5F), WOOL_PLATES_BLOCK_SET_TYPE));
 			}
 		});
 		event.register(Keys.ITEMS, helper -> {
