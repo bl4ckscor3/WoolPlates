@@ -3,6 +3,8 @@ package bl4ckscor3.mod.woolplates;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.BlockItem;
@@ -14,6 +16,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.PressurePlateBlock.Sensitivity;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModLoadingContext;
@@ -22,8 +25,6 @@ import net.neoforged.fml.common.Mod.EventBusSubscriber;
 import net.neoforged.fml.common.Mod.EventBusSubscriber.Bus;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
-import net.neoforged.neoforge.registries.ForgeRegistries;
-import net.neoforged.neoforge.registries.ForgeRegistries.Keys;
 import net.neoforged.neoforge.registries.RegisterEvent;
 
 @Mod(WoolPlates.MODID)
@@ -39,15 +40,15 @@ public class WoolPlates {
 
 	@SubscribeEvent
 	public static void onRegister(RegisterEvent event) {
-		event.register(Keys.BLOCKS, helper -> {
+		event.register(Registries.BLOCK, helper -> {
 			for (Color color : Color.values()) {
-				helper.register(getName(color), new WoolPlateBlock(Sensitivity.EVERYTHING, Block.Properties.of().noCollission().strength(0.5F), WOOL_PLATES_BLOCK_SET_TYPE));
+				helper.register(getName(color), new WoolPlateBlock(Sensitivity.EVERYTHING, BlockBehaviour.Properties.of().noCollission().strength(0.5F), WOOL_PLATES_BLOCK_SET_TYPE));
 			}
 		});
-		event.register(Keys.ITEMS, helper -> {
+		event.register(Registries.ITEM, helper -> {
 			for (Color color : Color.values()) {
 				ResourceLocation name = getName(color);
-				Block block = ForgeRegistries.BLOCKS.getValue(name);
+				Block block = BuiltInRegistries.BLOCK.get(name);
 
 				if (block != null) {
 					BlockItem blockItem = new BlockItem(block, new Item.Properties());
@@ -71,7 +72,7 @@ public class WoolPlates {
 		return new ResourceLocation(MODID, "wool_plate_" + color.name().toLowerCase());
 	}
 
-	private static enum Color {
+	private enum Color {
 		WHITE,
 		LIGHT_GRAY,
 		GRAY,
