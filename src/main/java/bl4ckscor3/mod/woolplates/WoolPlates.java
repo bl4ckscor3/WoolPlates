@@ -14,10 +14,10 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.PressurePlateBlock.Sensitivity;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.block.state.properties.BlockSetType.PressurePlateSensitivity;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
@@ -32,7 +32,7 @@ import net.neoforged.neoforge.registries.RegisterEvent;
 public class WoolPlates {
 	public static final String MODID = "woolplates";
 	private static final List<ItemStack> STACKS_FOR_CREATIVE_TABS = new ArrayList<>();
-	public static final BlockSetType WOOL_PLATES_BLOCK_SET_TYPE = BlockSetType.register(new BlockSetType(MODID + ":wool", true, SoundType.WOOL, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON, SoundEvents.EMPTY, SoundEvents.EMPTY));
+	public static final BlockSetType WOOL_PLATES_BLOCK_SET_TYPE = BlockSetType.register(new BlockSetType(MODID + ":wool", true, true, true, PressurePlateSensitivity.EVERYTHING, SoundType.WOOL, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON, SoundEvents.EMPTY, SoundEvents.EMPTY));
 
 	public WoolPlates() {
 		ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, SoundConfig.CONFIG_SPEC);
@@ -42,7 +42,7 @@ public class WoolPlates {
 	public static void onRegister(RegisterEvent event) {
 		event.register(Registries.BLOCK, helper -> {
 			for (Color color : Color.values()) {
-				helper.register(getName(color), new WoolPlateBlock(Sensitivity.EVERYTHING, BlockBehaviour.Properties.of().noCollission().strength(0.5F), WOOL_PLATES_BLOCK_SET_TYPE));
+				helper.register(getName(color), new WoolPlateBlock(BlockBehaviour.Properties.of().noCollission().strength(0.5F), WOOL_PLATES_BLOCK_SET_TYPE));
 			}
 		});
 		event.register(Registries.ITEM, helper -> {

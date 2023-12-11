@@ -12,8 +12,8 @@ import net.minecraft.world.level.gameevent.GameEvent;
 public class WoolPlateBlock extends PressurePlateBlock {
 	private BlockSetType blockSetType;
 
-	public WoolPlateBlock(Sensitivity sensitivity, Properties properties, BlockSetType blockSetType) {
-		super(sensitivity, properties, blockSetType);
+	public WoolPlateBlock(Properties properties, BlockSetType blockSetType) {
+		super(blockSetType, properties);
 		this.blockSetType = blockSetType;
 	}
 
