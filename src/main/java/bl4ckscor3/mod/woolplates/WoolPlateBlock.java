@@ -37,16 +37,18 @@ public class WoolPlateBlock extends PressurePlateBlock {
 		}
 
 		if (!shouldHaveSignal && hasSignal) {
-			if (SoundConfig.CONFIG.enableSound.get())
+			if (Configuration.CONFIG.enableSound.get())
 				level.playSound(null, pos, blockSetType.pressurePlateClickOff(), SoundSource.BLOCKS);
 
-			level.gameEvent(entity, GameEvent.BLOCK_DEACTIVATE, pos);
+			if (Configuration.CONFIG.triggerSculkSensors.get())
+				level.gameEvent(entity, GameEvent.BLOCK_DEACTIVATE, pos);
 		}
 		else if (shouldHaveSignal && !hasSignal) {
-			if (SoundConfig.CONFIG.enableSound.get())
+			if (Configuration.CONFIG.enableSound.get())
 				level.playSound(null, pos, blockSetType.pressurePlateClickOn(), SoundSource.BLOCKS);
 
-			level.gameEvent(entity, GameEvent.BLOCK_ACTIVATE, pos);
+			if (Configuration.CONFIG.triggerSculkSensors.get())
+				level.gameEvent(entity, GameEvent.BLOCK_ACTIVATE, pos);
 		}
 
 		if (shouldHaveSignal)
