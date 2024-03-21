@@ -35,7 +35,7 @@ public class WoolPlates {
 	public static final BlockSetType WOOL_PLATES_BLOCK_SET_TYPE = new BlockSetType(MODID + ":wool", SoundType.WOOL, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON, SoundEvents.EMPTY, SoundEvents.EMPTY);
 
 	public WoolPlates() {
-		ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, SoundConfig.CONFIG_SPEC);
+		ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Configuration.CONFIG_SPEC);
 	}
 
 	@SubscribeEvent
@@ -72,7 +72,7 @@ public class WoolPlates {
 		return new ResourceLocation(MODID, "wool_plate_" + color.name().toLowerCase());
 	}
 
-	private static enum Color {
+	public enum Color {
 		WHITE,
 		LIGHT_GRAY,
 		GRAY,
