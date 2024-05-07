@@ -1,7 +1,7 @@
 package bl4ckscor3.mod.woolplates;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.EnumMap;
+import java.util.Map;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -19,10 +19,10 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.BlockSetType.PressurePlateSensitivity;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.ModLoadingContext;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.EventBusSubscriber.Bus;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.common.Mod.EventBusSubscriber;
-import net.neoforged.fml.common.Mod.EventBusSubscriber.Bus;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.registries.RegisterEvent;
@@ -31,18 +31,22 @@ import net.neoforged.neoforge.registries.RegisterEvent;
 @EventBusSubscriber(bus = Bus.MOD)
 public class WoolPlates {
 	public static final String MODID = "woolplates";
-	private static final List<ItemStack> STACKS_FOR_CREATIVE_TABS = new ArrayList<>();
 	public static final BlockSetType WOOL_PLATES_BLOCK_SET_TYPE = BlockSetType.register(new BlockSetType(MODID + ":wool", true, true, true, PressurePlateSensitivity.EVERYTHING, SoundType.WOOL, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON, SoundEvents.EMPTY, SoundEvents.EMPTY));
+	public static final Map<Color, Block> BLOCKS = new EnumMap<>(Color.class);
+	public static final Map<Color, BlockItem> ITEMS = new EnumMap<>(Color.class);
 
-	public WoolPlates() {
-		ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Configuration.CONFIG_SPEC);
+	public WoolPlates(ModContainer modContainer) {
+		modContainer.registerConfig(ModConfig.Type.SERVER, Configuration.CONFIG_SPEC);
 	}
 
 	@SubscribeEvent
 	public static void onRegister(RegisterEvent event) {
 		event.register(Registries.BLOCK, helper -> {
 			for (Color color : Color.values()) {
-				helper.register(getName(color), new WoolPlateBlock(BlockBehaviour.Properties.of().noCollission().strength(0.5F), WOOL_PLATES_BLOCK_SET_TYPE));
+				Block block = new WoolPlateBlock(BlockBehaviour.Properties.of().noCollission().strength(0.5F), WOOL_PLATES_BLOCK_SET_TYPE);
+
+				helper.register(getName(color), block);
+				BLOCKS.put(color, block);
 			}
 		});
 		event.register(Registries.ITEM, helper -> {
@@ -54,7 +58,7 @@ public class WoolPlates {
 					BlockItem blockItem = new BlockItem(block, new Item.Properties());
 
 					helper.register(name, blockItem);
-					STACKS_FOR_CREATIVE_TABS.add(new ItemStack(blockItem));
+					ITEMS.put(color, blockItem);
 				}
 			}
 		});
@@ -63,9 +67,9 @@ public class WoolPlates {
 	@SubscribeEvent
 	public static void onCreativeModeTabBuildContents(BuildCreativeModeTabContentsEvent event) {
 		if (event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS)
-			event.getEntries().putAfter(new ItemStack(Items.STONE_PRESSURE_PLATE), STACKS_FOR_CREATIVE_TABS.get(0), TabVisibility.PARENT_AND_SEARCH_TABS); //white only
+			event.getEntries().putAfter(new ItemStack(Items.STONE_PRESSURE_PLATE), new ItemStack(ITEMS.get(Color.WHITE)), TabVisibility.PARENT_AND_SEARCH_TABS);
 		else if (event.getTabKey() == CreativeModeTabs.COLORED_BLOCKS)
-			event.acceptAll(STACKS_FOR_CREATIVE_TABS);
+			event.acceptAll(ITEMS.values().stream().map(ItemStack::new).toList());
 	}
 
 	public static ResourceLocation getName(Color color) {

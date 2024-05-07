@@ -1,0 +1,26 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="MIT https://github.com/bl4ckscor3/WoolPlates/blob/1.20.6/LICENSE"
+issueTrackerURL="https://github.com/bl4ckscor3/WoolPlates/issues"
+
+[[mods]]
+	modId="woolplates"
+	version="${file.jarVersion}"
+	displayName="Wool Pressure Plates"
+	description='''Adds pressure plates made out of wool.'''
+	displayURL="https://www.curseforge.com/minecraft/mc-mods/wool-pressure-plates"
+	authors="bl4ckscor3"
+
+[[dependencies.woolplates]]
+    modId="neoforge"
+    type="required"
+    versionRange="[20.6,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.woolplates]]
+    modId="minecraft"
+    type="required"
+    versionRange="[1.20.6,1.21)"
+    ordering="NONE"
+    side="BOTH"
