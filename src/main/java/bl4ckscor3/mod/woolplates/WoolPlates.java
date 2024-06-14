@@ -73,7 +73,7 @@ public class WoolPlates {
 	}
 
 	public static ResourceLocation getName(Color color) {
-		return new ResourceLocation(MODID, "wool_plate_" + color.name().toLowerCase());
+		return ResourceLocation.fromNamespaceAndPath(MODID, "wool_plate_" + color.name().toLowerCase());
 	}
 
 	public enum Color {
