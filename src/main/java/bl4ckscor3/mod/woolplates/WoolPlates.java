@@ -5,6 +5,7 @@ import java.util.Map;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.BlockItem;
@@ -43,23 +44,27 @@ public class WoolPlates {
 	public static void onRegister(RegisterEvent event) {
 		event.register(Registries.BLOCK, helper -> {
 			for (Color color : Color.values()) {
-				Block block = new WoolPlateBlock(BlockBehaviour.Properties.of().noCollission().strength(0.5F), WOOL_PLATES_BLOCK_SET_TYPE);
+				ResourceLocation name = getName(color);
+				Block block = new WoolPlateBlock(BlockBehaviour.Properties.of().noCollission().strength(0.5F).setId(ResourceKey.create(Registries.BLOCK, name)), WOOL_PLATES_BLOCK_SET_TYPE);
 
-				helper.register(getName(color), block);
+				helper.register(name, block);
 				BLOCKS.put(color, block);
 			}
 		});
 		event.register(Registries.ITEM, helper -> {
 			for (Color color : Color.values()) {
 				ResourceLocation name = getName(color);
-				Block block = BuiltInRegistries.BLOCK.get(name);
 
-				if (block != null) {
-					BlockItem blockItem = new BlockItem(block, new Item.Properties());
+				BuiltInRegistries.BLOCK.get(name).ifPresent(ref -> {
+					Block block = ref.value();
 
-					helper.register(name, blockItem);
-					ITEMS.put(color, blockItem);
-				}
+					if (block != null) {
+						BlockItem blockItem = new BlockItem(block, new Item.Properties().setId(ResourceKey.create(Registries.ITEM, name)));
+
+						helper.register(name, blockItem);
+						ITEMS.put(color, blockItem);
+					}
+				});
 			}
 		});
 	}

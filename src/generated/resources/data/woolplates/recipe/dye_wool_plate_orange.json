@@ -3,55 +3,23 @@
   "category": "building",
   "group": "wool_plates",
   "ingredients": [
-    {
-      "item": "minecraft:orange_dye"
-    },
+    "minecraft:orange_dye",
     [
-      {
-        "item": "woolplates:wool_plate_white"
-      },
-      {
-        "item": "woolplates:wool_plate_light_gray"
-      },
-      {
-        "item": "woolplates:wool_plate_gray"
-      },
-      {
-        "item": "woolplates:wool_plate_black"
-      },
-      {
-        "item": "woolplates:wool_plate_brown"
-      },
-      {
-        "item": "woolplates:wool_plate_red"
-      },
-      {
-        "item": "woolplates:wool_plate_yellow"
-      },
-      {
-        "item": "woolplates:wool_plate_lime"
-      },
-      {
-        "item": "woolplates:wool_plate_green"
-      },
-      {
-        "item": "woolplates:wool_plate_cyan"
-      },
-      {
-        "item": "woolplates:wool_plate_light_blue"
-      },
-      {
-        "item": "woolplates:wool_plate_blue"
-      },
-      {
-        "item": "woolplates:wool_plate_purple"
-      },
-      {
-        "item": "woolplates:wool_plate_magenta"
-      },
-      {
-        "item": "woolplates:wool_plate_pink"
-      }
+      "woolplates:wool_plate_white",
+      "woolplates:wool_plate_light_gray",
+      "woolplates:wool_plate_gray",
+      "woolplates:wool_plate_black",
+      "woolplates:wool_plate_brown",
+      "woolplates:wool_plate_red",
+      "woolplates:wool_plate_yellow",
+      "woolplates:wool_plate_lime",
+      "woolplates:wool_plate_green",
+      "woolplates:wool_plate_cyan",
+      "woolplates:wool_plate_light_blue",
+      "woolplates:wool_plate_blue",
+      "woolplates:wool_plate_purple",
+      "woolplates:wool_plate_magenta",
+      "woolplates:wool_plate_pink"
     ]
   ],
   "result": {

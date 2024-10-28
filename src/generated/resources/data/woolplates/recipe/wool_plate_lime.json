@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "wool_plates",
   "ingredients": [
-    {
-      "tag": "minecraft:wooden_pressure_plates"
-    },
-    {
-      "item": "minecraft:lime_wool"
-    }
+    "#minecraft:wooden_pressure_plates",
+    "minecraft:lime_wool"
   ],
   "result": {
     "count": 1,
