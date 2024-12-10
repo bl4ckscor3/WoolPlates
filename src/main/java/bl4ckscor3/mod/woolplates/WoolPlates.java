@@ -59,7 +59,7 @@ public class WoolPlates {
 					Block block = ref.value();
 
 					if (block != null) {
-						BlockItem blockItem = new BlockItem(block, new Item.Properties().setId(ResourceKey.create(Registries.ITEM, name)));
+						BlockItem blockItem = new BlockItem(block, new Item.Properties().setId(ResourceKey.create(Registries.ITEM, name)).useBlockDescriptionPrefix());
 
 						helper.register(name, blockItem);
 						ITEMS.put(color, blockItem);

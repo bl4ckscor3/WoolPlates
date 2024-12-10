@@ -2,10 +2,10 @@ plugins {
     id 'java-library'
     id 'eclipse'
     id 'idea'
-    id 'net.neoforged.gradle.userdev' version '7.0.+'
+    id 'net.neoforged.gradle.userdev' version '7.0.165'
 }
 
-version = '1.4.1'
+version = '1.4.2'
 group = 'bl4ckscor3.mod.woolplates'
 
 base {
