@@ -2,14 +2,14 @@ plugins {
     id 'java-library'
     id 'eclipse'
     id 'idea'
-    id 'net.neoforged.gradle.userdev' version '7.0.165'
+    id 'net.neoforged.gradle.userdev' version '7.0.+'
 }
 
 version = '1.4.2'
 group = 'bl4ckscor3.mod.woolplates'
 
 base {
-	archivesName = 'woolplates-1.21.3'
+	archivesName = 'woolplates-1.21.4'
 }
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
@@ -40,14 +40,14 @@ runs {
         argument '-nogui'
     }
 
-    data {
+    clientData {
 		workingDirectory project.file('run/data')
 		arguments.addAll '--mod', 'woolplates', '--all', '--output', file('src/generated/resources/').getAbsolutePath()
 	}
 }
 
 dependencies {
-	implementation 'net.neoforged:neoforge:21.3.4-beta'
+	implementation 'net.neoforged:neoforge:21.4.12-beta'
 }
 
 tasks.named('jar', Jar).configure {
