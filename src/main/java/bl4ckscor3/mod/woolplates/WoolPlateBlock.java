@@ -18,8 +18,8 @@ public class WoolPlateBlock extends PressurePlateBlock {
 	}
 
 	@Override
-	public void fallOn(Level level, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
-		super.fallOn(level, state, pos, entity, fallDistance * 0.8F);
+	public void fallOn(Level level, BlockState state, BlockPos pos, Entity entity, double fallDistance) {
+		super.fallOn(level, state, pos, entity, fallDistance * 0.8D);
 	}
 
 	@Override
