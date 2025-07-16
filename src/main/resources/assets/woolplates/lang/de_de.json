@@ -15,5 +15,9 @@
     "block.woolplates.wool_plate_brown": "Braune Wolldruckplatte",
     "block.woolplates.wool_plate_green": "Grüne Wolldruckplatte",
     "block.woolplates.wool_plate_red": "Rote Wolldruckplatte",
-    "block.woolplates.wool_plate_black": "Schwarze Wolldruckplatte"
+    "block.woolplates.wool_plate_black": "Schwarze Wolldruckplatte",
+    "woolplates.configuration.enable_sound": "Geräusch abspielen",
+    "woolplates.configuration.enable_sound.tooltip": "Wenn aktiviert, machen Wolldruckplatten ein Geräusch, wenn auf sie getreten wird.",
+    "woolplates.configuration.trigger_sculk_sensors": "Sculk-Sensoren auslösen",
+    "woolplates.configuration.trigger_sculk_sensors.tooltip": "Wenn aktiviert, spüren Sculk-Sensoren das Drücken von Wolldruckplatten. Wenn du möchtest, dass auch das Platzieren und Zerbrechen von Wolldruckplatten Sculk-Sensoren auslöst, musst du die Druckplatten aus dem minecraft:dampens_vibrations Block-Tag entfernen."
 }
