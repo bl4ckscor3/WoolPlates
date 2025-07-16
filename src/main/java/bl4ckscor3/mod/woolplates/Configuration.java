@@ -21,7 +21,7 @@ public class Configuration {
 	Configuration(ModConfigSpec.Builder builder) {
 		//@formatter:off
 		enableSound = builder
-				.comment("true if the wool pressure plates should play a sound when stepped on/off, false otherwhise")
+				.comment("true if the wool pressure plates should play a sound when stepped on/off, false otherwhise.")
 				.define("enable_sound", false);
 		triggerSculkSensors = builder
 				.comment("True if the wool pressure plates should trigger sculk sensors, false otherwise. This only applies to pressing the plates.",

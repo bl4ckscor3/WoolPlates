@@ -15,5 +15,9 @@
     "block.woolplates.wool_plate_brown": "Brown Wool Pressure Plate",
     "block.woolplates.wool_plate_green": "Green Wool Pressure Plate",
     "block.woolplates.wool_plate_red": "Red Wool Pressure Plate",
-    "block.woolplates.wool_plate_black": "Black Wool Pressure Plate"
+    "block.woolplates.wool_plate_black": "Black Wool Pressure Plate",
+    "woolplates.configuration.enable_sound": "Make sound",
+    "woolplates.configuration.enable_sound.tooltip": "Enable to have wool pressure plates make a sound when stepped on/off.",
+    "woolplates.configuration.trigger_sculk_sensors": "Trigger sculk sensors",
+    "woolplates.configuration.trigger_sculk_sensors.tooltip": "Enable to have pressing wool pressure plates trigger sculk sensors. If you want placing and breaking them to trigger sculk sensors, you need to remove the pressure plates from the minecraft:dampens_vibrations block tag."
 }
