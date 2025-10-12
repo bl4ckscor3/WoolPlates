@@ -44,7 +44,7 @@ public class WoolPlates {
 		event.register(Registries.BLOCK, helper -> {
 			for (Color color : Color.values()) {
 				ResourceLocation name = getName(color);
-				Block block = new WoolPlateBlock(BlockBehaviour.Properties.of().noCollission().strength(0.5F).setId(ResourceKey.create(Registries.BLOCK, name)), WOOL_PLATES_BLOCK_SET_TYPE);
+				Block block = new WoolPlateBlock(BlockBehaviour.Properties.of().noCollision().strength(0.5F).setId(ResourceKey.create(Registries.BLOCK, name)), WOOL_PLATES_BLOCK_SET_TYPE);
 
 				helper.register(name, block);
 				BLOCKS.put(color, block);
