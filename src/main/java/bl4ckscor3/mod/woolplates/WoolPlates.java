@@ -5,8 +5,8 @@ import java.util.Map;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab.TabVisibility;
@@ -43,7 +43,7 @@ public class WoolPlates {
 	public static void onRegister(RegisterEvent event) {
 		event.register(Registries.BLOCK, helper -> {
 			for (Color color : Color.values()) {
-				ResourceLocation name = getName(color);
+				Identifier name = getName(color);
 				Block block = new WoolPlateBlock(BlockBehaviour.Properties.of().noCollision().strength(0.5F).setId(ResourceKey.create(Registries.BLOCK, name)), WOOL_PLATES_BLOCK_SET_TYPE);
 
 				helper.register(name, block);
@@ -52,7 +52,7 @@ public class WoolPlates {
 		});
 		event.register(Registries.ITEM, helper -> {
 			for (Color color : Color.values()) {
-				ResourceLocation name = getName(color);
+				Identifier name = getName(color);
 
 				BuiltInRegistries.BLOCK.get(name).ifPresent(ref -> {
 					Block block = ref.value();
@@ -76,8 +76,8 @@ public class WoolPlates {
 			event.acceptAll(ITEMS.values().stream().map(ItemStack::new).toList());
 	}
 
-	public static ResourceLocation getName(Color color) {
-		return ResourceLocation.fromNamespaceAndPath(MODID, "wool_plate_" + color.name().toLowerCase());
+	public static Identifier getName(Color color) {
+		return Identifier.fromNamespaceAndPath(MODID, "wool_plate_" + color.name().toLowerCase());
 	}
 
 	public enum Color {
