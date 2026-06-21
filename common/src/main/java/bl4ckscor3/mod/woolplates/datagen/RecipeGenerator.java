@@ -2,7 +2,6 @@ package bl4ckscor3.mod.woolplates.datagen;
 
 import java.util.concurrent.CompletableFuture;
 
-import bl4ckscor3.mod.woolplates.RegistryObject;
 import bl4ckscor3.mod.woolplates.WoolPlates;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
@@ -16,6 +15,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.ColorCollection;
 
 public class RecipeGenerator extends RecipeProvider {
@@ -30,7 +30,7 @@ public class RecipeGenerator extends RecipeProvider {
 	public final void buildRecipes() {
 		ColorCollection.VALUES.forEach(color -> {
 			Item dye = Items.DYE.pick(color);
-			Item plate = WoolPlates.ITEMS.pick(color).get();
+			ItemLike plate = WoolPlates.ITEMS.pick(color);
 
 			ShapelessRecipeBuilder.shapeless(items, RecipeCategory.MISC, plate)
 				.group("wool_plates")
@@ -41,7 +41,7 @@ public class RecipeGenerator extends RecipeProvider {
 			ShapelessRecipeBuilder.shapeless(items, RecipeCategory.BUILDING_BLOCKS, plate)
 				.group("wool_plates")
 				.requires(dye)
-				.requires(Ingredient.of(WoolPlates.ITEMS.asList().stream().map(RegistryObject::get).filter(check -> !check.equals(plate))))
+				.requires(Ingredient.of(WoolPlates.ITEMS.asList().stream().filter(check -> !check.equals(plate))))
 				.unlockedBy("has_needed_dye", has(dye))
 				.save(output, WoolPlates.MODID + ":dye_" + getItemName(plate));
 		});
