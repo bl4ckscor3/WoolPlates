@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "category": "misc",
   "group": "wool_plates",
   "ingredients": [
     "#minecraft:wooden_pressure_plates",

@@ -2,7 +2,6 @@ package bl4ckscor3.mod.woolplates.datagen;
 
 import java.util.Set;
 
-import bl4ckscor3.mod.woolplates.RegistryObject;
 import bl4ckscor3.mod.woolplates.WoolPlates;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
@@ -15,6 +14,6 @@ public class BlockLootTableGenerator extends BlockLootSubProvider {
 
 	@Override
 	public void generate() {
-		WoolPlates.BLOCKS.values().stream().map(RegistryObject::get).forEach(this::dropSelf);
+		WoolPlates.BLOCKS.forEach(block -> dropSelf(block.get()));
 	}
 }

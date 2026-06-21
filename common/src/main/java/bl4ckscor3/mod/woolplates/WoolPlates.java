@@ -1,13 +1,16 @@
 package bl4ckscor3.mod.woolplates;
 
-import java.util.EnumMap;
-import java.util.Map;
+import java.util.List;
+import java.util.stream.Stream;
 
 import net.minecraft.core.registries.Registries;
+import net.minecraft.references.BlockItemId;
 import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.ColorCollection;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
@@ -15,8 +18,24 @@ import net.minecraft.world.level.block.state.properties.BlockSetType;
 public class WoolPlates {
 	public static final String MODID = "woolplates";
 	public static final BlockSetType WOOL_PLATES_BLOCK_SET_TYPE = BlockSetType.register(new BlockSetType(MODID + ":wool", true, true, true, BlockSetType.PressurePlateSensitivity.EVERYTHING, SoundType.WOOL, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.EMPTY, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON, SoundEvents.EMPTY, SoundEvents.EMPTY));
-	public static final Map<Color, RegistryObject<WoolPlateBlock>> BLOCKS = new EnumMap<>(Color.class);
-	public static final Map<Color, RegistryObject<BlockItem>> ITEMS = new EnumMap<>(Color.class);
+	public static final ColorCollection<BlockItemId> IDS = ColorCollection.NAMES.map(color -> {
+		Identifier base = Identifier.fromNamespaceAndPath(MODID, "wool_plate_" + color);
+		return BlockItemId.create(base, base);
+	});
+	public static final ColorCollection<RegistryObject<WoolPlateBlock>> BLOCKS = IDS.map(
+		id -> RegistryObject.block(
+			id.block().identifier().getPath(),
+			p -> new WoolPlateBlock(p, WOOL_PLATES_BLOCK_SET_TYPE),
+			() -> BlockBehaviour.Properties.of().noCollision().strength(0.5F)
+		)
+	);
+	public static final ColorCollection<RegistryObject<BlockItem>> ITEMS = ColorCollection.zipMap(IDS, BLOCKS,
+		(id, block) -> RegistryObject.blockItem(
+			id.item().identifier().getPath(),
+			p -> new BlockItem(block.get(), p),
+			Item.Properties::new
+		)
+	);
 	private static Platform platform;
 
 	public synchronized static void initialize(Platform platform) {
@@ -26,16 +45,8 @@ public class WoolPlates {
 
 		WoolPlates.platform = platform;
 
-		for (Color color : Color.values()) {
-			String name = color.getPlateName();
-			RegistryObject<WoolPlateBlock> block = RegistryObject.block(name, p -> new WoolPlateBlock(p, WOOL_PLATES_BLOCK_SET_TYPE), () -> BlockBehaviour.Properties.of().noCollision().strength(0.5F));
-			RegistryObject<BlockItem> blockItem = RegistryObject.blockItem(name, p -> new BlockItem(block.get(), p), Item.Properties::new);
-
-			platform.register(Registries.BLOCK, block);
-			platform.register(Registries.ITEM, blockItem);
-			BLOCKS.put(color, block);
-			ITEMS.put(color, blockItem);
-		}
+		BLOCKS.forEach(block -> platform.register(Registries.BLOCK, block));
+		ITEMS.forEach(item -> platform.register(Registries.ITEM, item));
 	}
 
 	public static Identifier id(String path) {
@@ -46,26 +57,26 @@ public class WoolPlates {
 		return platform;
 	}
 
-	public enum Color {
-		WHITE,
-		LIGHT_GRAY,
-		GRAY,
-		BLACK,
-		BROWN,
-		RED,
-		ORANGE,
-		YELLOW,
-		LIME,
-		GREEN,
-		CYAN,
-		LIGHT_BLUE,
-		BLUE,
-		PURPLE,
-		MAGENTA,
-		PINK;
+	public static Stream<Item> gameplayColorOrderItems() {
+		List<DyeColor> gameplayColorOrder = List.of(
+			DyeColor.WHITE,
+			DyeColor.LIGHT_GRAY,
+			DyeColor.GRAY,
+			DyeColor.BLACK,
+			DyeColor.BROWN,
+			DyeColor.RED,
+			DyeColor.ORANGE,
+			DyeColor.YELLOW,
+			DyeColor.LIME,
+			DyeColor.GREEN,
+			DyeColor.CYAN,
+			DyeColor.LIGHT_BLUE,
+			DyeColor.BLUE,
+			DyeColor.PURPLE,
+			DyeColor.MAGENTA,
+			DyeColor.PINK
+		);
 
-		public String getPlateName() {
-			return "wool_plate_" + name().toLowerCase();
-		}
+		return gameplayColorOrder.stream().map(ITEMS::pick).map(RegistryObject::get);
 	}
 }

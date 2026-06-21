@@ -22,8 +22,8 @@ public class FabricEntrypoint implements ModInitializer, Platform {
 	public void onInitialize() {
 		WoolPlates.initialize(this);
 		ConfigRegistry.INSTANCE.register(WoolPlates.MODID, ModConfig.Type.SERVER, Configuration.CONFIG_SPEC);
-		CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.REDSTONE_BLOCKS).register(output -> output.insertAfter(Items.STONE_PRESSURE_PLATE, List.of(new ItemStack(WoolPlates.ITEMS.get(WoolPlates.Color.WHITE).get())), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS));
-		CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.COLORED_BLOCKS).register(output -> output.acceptAll(WoolPlates.ITEMS.values().stream().map(RegistryObject::get).map(ItemStack::new).toList()));
+		CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.REDSTONE_BLOCKS).register(output -> output.insertAfter(Items.STONE_PRESSURE_PLATE, List.of(new ItemStack(WoolPlates.ITEMS.white().get())), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS));
+		CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.COLORED_BLOCKS).register(output -> output.acceptAll(WoolPlates.gameplayColorOrderItems().map(ItemStack::new).toList()));
 	}
 
 	@Override

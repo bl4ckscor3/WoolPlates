@@ -3,7 +3,6 @@ package bl4ckscor3.mod.woolplates.datagen;
 import java.util.List;
 import java.util.Set;
 
-import bl4ckscor3.mod.woolplates.RegistryObject;
 import bl4ckscor3.mod.woolplates.WoolPlates;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.data.loot.LootTableProvider.SubProviderEntry;
@@ -23,7 +22,7 @@ public class DataGenRegistrar {
 		event.createProvider((output, lookupProvider) -> new LootTableProvider(output, Set.of(), List.of(new SubProviderEntry(lookupProvider1 -> new BlockLootTableGenerator(lookupProvider1) {
 			@Override
 			protected Iterable<Block> getKnownBlocks() {
-				return WoolPlates.BLOCKS.values().stream().map(RegistryObject::get).map(Block.class::cast).toList();
+				return WoolPlates.BLOCKS.map(block -> (Block) block.get()).asList();
 			}
 		}, LootContextParamSets.BLOCK)), lookupProvider));
 		event.createProvider(RecipeGenerator.Runner::new);
