@@ -17,5 +17,6 @@ public class BlockTagGenerator extends VanillaBlockTagsProvider {
 	@Override
 	protected void addTags(HolderLookup.Provider provider) {
 		tag(BlockTags.DAMPENS_VIBRATIONS).addAll(WoolPlates.IDS.map(BlockItemId::block));
+		tag(BlockTags.PRESSURE_PLATES).addAll(WoolPlates.IDS.map(BlockItemId::block));
 	}
 }

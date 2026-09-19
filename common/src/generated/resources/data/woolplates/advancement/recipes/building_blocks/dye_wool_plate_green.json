@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "woolplates:dye_wool_plate_green"
+        "recipes": "woolplates:dye_wool_plate_green"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

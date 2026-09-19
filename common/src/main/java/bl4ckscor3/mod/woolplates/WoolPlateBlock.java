@@ -49,6 +49,6 @@ public class WoolPlateBlock extends PressurePlateBlock {
 		}
 
 		if (shouldHaveSignal)
-			level.scheduleTick(new BlockPos(pos), this, getPressedTime());
+			level.scheduleTick(pos, this, getPressedTime());
 	}
 }

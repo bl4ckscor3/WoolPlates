@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "woolplates:wool_plate_light_blue"
+        "recipes": "woolplates:wool_plate_light_blue"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

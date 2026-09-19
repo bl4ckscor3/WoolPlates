@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "woolplates:wool_plate_cyan"
+        "recipes": "woolplates:wool_plate_cyan"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
