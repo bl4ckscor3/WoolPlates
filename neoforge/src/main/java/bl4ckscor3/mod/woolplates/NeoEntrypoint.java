@@ -29,7 +29,7 @@ public class NeoEntrypoint implements Platform {
 	public NeoEntrypoint(ModContainer modContainer, IEventBus modBus) {
 		this.modBus = modBus;
 		WoolPlates.initialize(this);
-		modContainer.registerConfig(ModConfig.Type.SERVER, Configuration.CONFIG_SPEC);
+		modContainer.registerConfig(ModConfig.Type.SYNCED, Configuration.CONFIG_SPEC);
 	}
 
 	@SubscribeEvent
